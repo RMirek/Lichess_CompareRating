@@ -24,6 +24,7 @@ for i, user in enumerate(users_list):
     
     for game in user_points: 
         if game['name'] == GAME_TYPE:
+            SAVE_NAME = '_'.join(users_list) + '_' + GAME_TYPE
             points = np.array(game['points'])
             dates = [datetime.datetime(x[0], x[1]+1, x[2]) for x in points[:,:3]]
             plt.plot(dates, points[:,3], label=user, linewidth=2)
@@ -36,3 +37,8 @@ ax.fmt_xdata = mdates.DateFormatter('%Y-%m-%d')
 plt.legend(fontsize=20)
 ax.tick_params(axis='both', direction = "in", which='major', labelsize = 20,
     right = True, top = True, left = True)    
+plt.show()
+# fig.savefig(SAVE_NAME, bbox_inches='tight', dpi=100)
+# plt.cla()
+# plt.clf()
+# plt.close('all')
