@@ -2,16 +2,14 @@ import time
 import json
 import urllib
 import matplotlib.pyplot as plt
-import ast
 import numpy as np
 import datetime
 import matplotlib.dates as mdates
 
 def get_user_points(user):
-    print('Processing user: ', user)
     user_history = urllib.request.urlopen(
         "http://en.lichess.org/api/user/" + user + '/rating-history').read()
-    return ast.literal_eval(json.loads(user_history)[1:-1])
+    return json.loads(user_history)
 
 users_list = ['rwmmir', 'Thibault'] # list of users, you can put as many as you want
 
@@ -20,8 +18,8 @@ GAME_TYPE = 'Blitz' #Bullet, Blitz, Rapid, Classical...
 fig, ax = plt.subplots(1,1, figsize=(8, 6), facecolor='w', edgecolor='k')
 
 for i, user in enumerate(users_list):
+    print('Processing user: ', user)
     user_points = get_user_points(user)
-    
     for game in user_points: 
         if game['name'] == GAME_TYPE:
             SAVE_NAME = '_'.join(users_list) + '_' + GAME_TYPE
