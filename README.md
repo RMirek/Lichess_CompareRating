@@ -2,4 +2,4 @@
 
 This program was made from the need of comparing the ratings between the players in time. It plots the change of the rating in time for any game type and any user.
 
-![alt text](https://github.com/RMirek/Lichess_CompareRating/blob/main/blitz.png)
+![alt text](https://github.com/RMirek/Lichess_CompareRating/blob/main/rwmmir_Thibault_sgis_Bullet_Blitz_Rapid_Classical.png)
