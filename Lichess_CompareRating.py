@@ -57,7 +57,7 @@ if len(variants)%2==1:
 fig.tight_layout()        
 plt.show()
 
-# save_name = '_'.join(users_list) + '_'.join(variants)
+# save_name = '_'.join(users_list) + '_' + '_'.join(variants)
 # fig.savefig(save_name, bbox_inches='tight', dpi=100)
 # plt.cla()
 # plt.clf()
