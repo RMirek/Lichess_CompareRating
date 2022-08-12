@@ -1,15 +1,12 @@
-import time
-import json
-import urllib
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
 import matplotlib.dates as mdates
+import requests
 
 def getUserPoints(user):
-    user_history = urllib.request.urlopen(
-        "http://en.lichess.org/api/user/" + user + '/rating-history').read()
-    return json.loads(user_history)
+    resp = requests.get(url = 'http://lichess.org/api/user/' + user + '/rating-history')
+    return resp.json()
 
 def createFigure(variants, ncols=2):
     nrows = int(np.ceil(len(variants)/ncols))    
@@ -33,7 +30,7 @@ def formatTicks(nrow, ncol):
         right = True, top = True, left = True)    
     plt.setp(ax[nrow, ncol].get_xticklabels(), rotation=30, horizontalalignment='right')
     
-users_list = ['rwmmir', 'Thibault', 'sgis'] # list of users, you can put as many as you want
+users_list = ['rwmmir', 'Marianczellini'] # list of users, you can put as many as you want
 variants = ['Bullet', 'Blitz', 'Rapid', 'Classical'] # variants, you can put as many as you want
 
 fig, ax = createFigure(variants)
